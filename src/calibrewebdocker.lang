@@ -13,9 +13,9 @@
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [zh-cn]
 name         = "Calibre-Web"
@@ -23,7 +23,7 @@ auth         = "janeczku"
 version      = "@@VERSION@@"
 descript     = "Calibre-Web 是一个基于现有 Calibre 书库的电子书 Web 应用。它让局域网内的所有人都能用浏览器浏览、搜索和阅读电子书：按作者、系列、标签或语言筛选，在线阅读 EPUB/PDF 或推送到阅读器，也可以在授权后编辑元数据、上传新书。本应用使用 Docker Hub 官方镜像并以非 root 用户运行；书库与全部设置都保存在应用数据目录，重启和升级都不会丢失。"
 release_note = "1. 首个版本：Calibre-Web 0.6.27，来自 Docker Hub，以非 root 用户运行。书库与设置保存在应用数据目录，重启和升级不丢失。"
-important    = "需要 DockerEngine。安装时从 Docker Hub 拉取镜像；若无法访问 Docker Hub，请先在 DockerEngine 中配置镜像加速。请把 Calibre 书库（包含 metadata.db 的文件夹）放到 DockerAppData/calibrewebdocker/books（文件管理器看不到该目录，请用 SSH/SFTP），然后在网页里把书库路径设为 /books。初始账号 admin，密码 admin123，请立即修改。卸载并删除数据前请备份 DockerAppData/calibrewebdocker。应用通过局域网 HTTP 访问。"
+important    = "初始账号 admin，密码 admin123，请立即修改。需要 DockerEngine。请把 Calibre 书库（含 metadata.db 的文件夹）通过 SSH/SFTP 放到 DockerAppData/calibrewebdocker/books（文件管理器看不到该目录），然后在网页里把书库路径设为 /books。卸载并删除数据前请备份该目录。应用通过局域网 HTTP 访问。"
 
 [zh-hk]
 name         = "Calibre-Web"
@@ -31,165 +31,165 @@ auth         = "janeczku"
 version      = "@@VERSION@@"
 descript     = "Calibre-Web 是一個以現有 Calibre 書庫為基礎的電子書 Web 應用。它讓局域網內所有人用瀏覽器瀏覽、搜尋和閱讀電子書：按作者、系列、標籤或語言篩選，在線閱讀 EPUB/PDF 或推送到閱讀器，也可在授權後編輯元資料、上傳新書。本應用使用 Docker Hub 官方鏡像並以非 root 使用者運行；書庫與全部設定都保存在應用資料目錄，重啟和升級都不會遺失。"
 release_note = "1. 首個版本：Calibre-Web 0.6.27，來自 Docker Hub，以非 root 使用者運行。書庫與設定保存在應用資料目錄，重啟和升級不遺失。"
-important    = "需要 DockerEngine。安裝時從 Docker Hub 拉取鏡像；若無法存取 Docker Hub，請先在 DockerEngine 中設定鏡像加速。請把 Calibre 書庫（包含 metadata.db 的資料夾）放到 DockerAppData/calibrewebdocker/books（檔案管理員看不到該目錄，請用 SSH/SFTP），然後在網頁把書庫路徑設為 /books。初始帳號 admin，密碼 admin123，請立即修改。解除安裝並刪除資料前請備份 DockerAppData/calibrewebdocker。應用透過局域網 HTTP 存取。"
+important    = "初始帳號 admin，密碼 admin123，請立即修改。需要 DockerEngine。請把 Calibre 書庫（含 metadata.db 的資料夾）透過 SSH/SFTP 放到 DockerAppData/calibrewebdocker/books（檔案管理員看不到該目錄），然後在網頁把書庫路徑設為 /books。解除安裝並刪除資料前請備份該目錄。應用透過局域網 HTTP 存取。"
 
 [fr-fr]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [de-de]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [it-it]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [es-es]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [hu-hu]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [ja-jp]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [ko-kr]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [pl-pl]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [ru-ru]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [tr-tr]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [pt-pt]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [ar-sa]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [cs-cz]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [he-il]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [id-id]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [nb-no]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [nl-nl]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [sv-se]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [th-th]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 
 [vi-vn]
 name         = "Calibre-Web"
 auth         = "janeczku"
 version      = "@@VERSION@@"
-descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates."
+descript     = "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. Search by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader. Runs as a non-root container; the library and settings stay in the app data folder."
 release_note = "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates."
-important    = "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN."
+important    = "Login: admin / admin123 - change it now. Needs DockerEngine. Put the Calibre library (folder with metadata.db) in DockerAppData/calibrewebdocker/books via SSH/SFTP, then set /books in the UI. Back up that folder before uninstalling with data removal. Plain HTTP on the LAN."
 

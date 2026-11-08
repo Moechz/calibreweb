@@ -3,6 +3,15 @@
 > TerraMaster TOS 7 App Center — **Docker application** package for
 > [Calibre-Web](https://github.com/janeczku/calibre-web).
 
+## Important / 重要提示
+
+- **Initial login / 初始账号**: `admin` / `admin123` — change the password immediately after the first sign-in. / 首次登录后请立即修改密码。
+- **Bring your own Calibre library / 必须自备书库**: Calibre-Web does not create a Calibre library. Put the folder that contains `metadata.db` and the book files into `/Volume1/DockerAppData/calibrewebdocker/books`, then enter `/books` as the library path in the web UI. / 本应用不创建 Calibre 书库；请把含 `metadata.db` 的书库放到上述目录，并在网页里把书库路径填为 `/books`。
+- **No File Manager access / 文件管理器不可见**: `DockerAppData` is not listed in TOS File Manager; upload the library with SSH/SFTP. / 请用 SSH/SFTP 上传书库。
+- **Backup / 备份**: copy both `config/` and `books/` before uninstalling with data removal. / 卸载并删除数据前请备份 `config/` 与 `books/`。
+- **Plain HTTP / 明文 HTTP**: the app is served over LAN HTTP; do not expose port 8012 to the internet without a TLS reverse proxy. / 不要在没有 TLS 反代的情况下把 8012 暴露到公网。
+- **DockerEngine / 依赖**: DockerEngine is required; add a Docker Hub mirror if Docker Hub is unreachable. / 需要 DockerEngine；无法访问 Docker Hub 时请先配置镜像加速。
+
 ## What this is
 
 A four-file TOS Docker application archive (`calibrewebdocker.tar.gz`) that installs
@@ -54,8 +63,8 @@ table lists what is created and how it behaves. Nothing else is written.
 
 ```bash
 scripts/build.sh                  # -> out/calibrewebdocker.tar.gz + .sha256
-scripts/build.sh 0.6.27-2   # packaging iteration bump
-scripts/build.sh 0.6.27-1 aarch64
+scripts/build.sh 0.6.27-3   # packaging iteration bump
+scripts/build.sh 0.6.27-2 aarch64
 ```
 
 The build stages the four files, substitutes the version/platform placeholders,
@@ -81,12 +90,12 @@ bash test/install-and-verify.sh                  # on-device E2E (needs root)
 ## Store submission checklist
 
 1. Public GitHub repo (code + README only).
-2. Release **tag `v0.6.27-1`**, assets `calibrewebdocker.tar.gz` +
+2. Release **tag `v0.6.27-2`**, assets `calibrewebdocker.tar.gz` +
    `calibrewebdocker.tar.gz.sha256` (Docker asset naming: `<app_id>.tar.gz`, **no
    platform suffix**).
 3. Developer platform → Add Application: ID `calibrewebdocker`, package type Docker,
    repository URL, architecture `x86_64`.
-4. Version Management → Add Version `0.6.27-1` → automated validation → review.
+4. Version Management → Add Version `0.6.27-2` → automated validation → review.
 
 ## License / branding
 
