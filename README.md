@@ -15,7 +15,8 @@
 ## What this is
 
 A four-file TOS Docker application archive (`calibrewebdocker.tar.gz`) that installs
-Calibre-Web on TOS 7 through the App Center:
+Calibre-Web on TOS 7 through the App Center. The same four files are packaged once per
+architecture as `calibrewebdocker_x86_64.tar.gz` and `calibrewebdocker_aarch64.tar.gz`:
 
 - `config.ini` — TOS application metadata (`application_type: docker`, id `calibrewebdocker`)
 - `calibrewebdocker.lang` — 23-language superset (TOS requires 14)
@@ -33,6 +34,21 @@ Calibre-Web on TOS 7 through the App Center:
 | Logs | `docker logs calibrewebdocker` (stdout/stderr) |
 
 Everything persistent lives in two mounted folders: `config` holds the settings database (`app.db`), the Google Drive database (`gdrive.db`), the encryption key for stored service credentials (`.key`) and the thumbnail cache; `books` is the Calibre library itself - the folder that contains `metadata.db` and the ebook files Calibre-Web serves. Copying those two folders is a complete backup.
+
+## Architectures / 双架构
+
+TOS accepts **one package per architecture**, and this project publishes and submits both
+by default:
+
+| Architecture | Package |
+|---|---|
+| x86_64 | `calibrewebdocker_x86_64.tar.gz` + `.sha256` |
+| aarch64 | `calibrewebdocker_aarch64.tar.gz` + `.sha256` |
+
+`scripts/build-dual.sh` builds both, keeps the unsuffixed `calibrewebdocker.tar.gz` as the
+x86_64 canonical package, and runs the official conformance check on both. On the
+developer platform the two packages are **two App records with the same `app_id` and
+different `platform`** (`x86_64` / `aarch64`), each with its own version.
 
 ## Design highlights
 
@@ -62,7 +78,8 @@ table lists what is created and how it behaves. Nothing else is written.
 ## Build
 
 ```bash
-scripts/build.sh                  # -> out/calibrewebdocker.tar.gz + .sha256
+scripts/build-dual.sh             # default: build x86_64 + aarch64
+scripts/build.sh                  # single arch only (debugging)
 scripts/build.sh 0.6.27-3   # packaging iteration bump
 scripts/build.sh 0.6.27-2 aarch64
 ```
@@ -79,23 +96,28 @@ literal secrets and the SVG size/element limits).
 ## Local verification
 
 ```bash
-./TOSAppSelfTestingTool -c out/calibrewebdocker.tar.gz   # official spec check
-bash test/install-and-verify.sh                  # on-device E2E (needs root)
+./TOSAppSelfTestingTool -c out/calibrewebdocker_x86_64.tar.gz   # official check
+./TOSAppSelfTestingTool -c out/calibrewebdocker_aarch64.tar.gz  # official check
+bash test/install-and-verify.sh out/calibrewebdocker_x86_64.tar.gz --keep  # E2E (needs root)
 ```
 
 > Docker applications cannot be side-loaded through the App Center's manual
 > install page (it accepts `.deb` only); the official self-testing tool's `-i`
 > mode or `docker compose` are the only ways to install one for testing.
 
-## Store submission checklist
+## Store submission checklist (dual architecture)
 
 1. Public GitHub repo (code + README only).
-2. Release **tag `v0.6.27-2`**, assets `calibrewebdocker.tar.gz` +
-   `calibrewebdocker.tar.gz.sha256` (Docker asset naming: `<app_id>.tar.gz`, **no
-   platform suffix**).
-3. Developer platform → Add Application: ID `calibrewebdocker`, package type Docker,
-   repository URL, architecture `x86_64`.
-4. Version Management → Add Version `0.6.27-2` → automated validation → review.
+2. Release **tag `v0.6.27-2`**, assets:
+   - `calibrewebdocker_x86_64.tar.gz` + `.sha256`
+   - `calibrewebdocker_aarch64.tar.gz` + `.sha256`
+
+   The unsuffixed `calibrewebdocker.tar.gz` is kept as the x86_64 canonical package
+   for the first submission; for multi-arch releases use the suffixed assets.
+3. Developer platform → Add Application **twice**, same ID `calibrewebdocker`,
+   package type Docker, repository URL, architectures `x86_64` and `aarch64`.
+4. Version Management → Add Version `0.6.27-2` for each architecture, pointing at
+   the matching suffixed asset → automated validation → review.
 
 ## License / branding
 
