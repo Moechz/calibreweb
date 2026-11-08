@@ -1,0 +1,122 @@
+{
+  "app_id": "calibrewebdocker",
+  "title": "Calibre-Web",
+  "image": "linuxserver/calibre-web:0.6.27-ls409",
+  "repo_name": "calibre-web",
+  "github_repo": "calibreweb",
+  "mode": "wrapper",
+  "entrypoint_file": "src/entrypoint.sh",
+  "wrapper_note": "the upstream image starts s6-overlay as root and switches to its internal\n\"abc\" user; TOS forbids root containers, so this entrypoint bypasses s6 and\nstarts Calibre-Web directly as uid 1000, moving its cache and log into the\nmounted /config volume.\n",
+  "wrapper_note_readme": "- **Entrypoint wrapper (privileges)**: the upstream image starts s6-overlay as root and drops to its internal `abc` user, which cannot work inside a non-root container. `src/entrypoint.sh` bypasses s6 and starts Calibre-Web directly as `1000:1000`, pointing its settings database, cache and log at the mounted `/config` volume. The application code under `/app` stays unmodified and read-only.",
+  "container_port": 8083,
+  "host_port": 8012,
+  "category": [
+    "Utilities"
+  ],
+  "user": "1000:1000",
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/calibrewebdocker/config",
+      "container": "/config"
+    },
+    {
+      "host": "/Volume1/DockerAppData/calibrewebdocker/books",
+      "container": "/books"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai",
+    "CALIBRE_DBPATH": "/config",
+    "CACHE_DIRECTORY": "/config/cache",
+    "HOME": "/config"
+  },
+  "healthcheck": [
+    "CMD-SHELL",
+    "curl -s -o /dev/null http://127.0.0.1:8083/ || exit 1"
+  ],
+  "healthcheck_interval": "30s",
+  "healthcheck_timeout": "10s",
+  "healthcheck_retries": 3,
+  "healthcheck_start_period": "45s",
+  "auth": "janeczku",
+  "upstream_url": "https://github.com/janeczku/calibre-web",
+  "upstream_license": "GPL-3.0",
+  "license": "GPL-3.0",
+  "descript": "Calibre-Web is a web app for browsing, reading and downloading eBooks from an existing Calibre library. It gives everyone on your network a clean browser interface: search and filter by author, series, tag or language, read EPUB/PDF in the browser or send books to an e-reader, and edit metadata or upload new titles when you allow it. This package runs the official Docker Hub image as a non-root container; the library and all settings live in the application data folder and survive restarts and updates.",
+  "release_note": "1. First release: Calibre-Web 0.6.27 from Docker Hub, running as a non-root container. The Calibre library and settings live in the application data folder and survive restarts and updates.",
+  "important": "Requires DockerEngine. The image is pulled from Docker Hub at install time; add a registry mirror if Docker Hub is unreachable. Put your Calibre library (the folder with metadata.db) in DockerAppData/calibrewebdocker/books (use SSH/SFTP; the file manager cannot see DockerAppData), then set /books as the library path in the UI. First login: admin / admin123 - change the password immediately. Back up DockerAppData/calibrewebdocker before uninstalling with data removal. The app is plain HTTP on the LAN.",
+  "translations": {
+    "zh-cn": {
+      "descript": "Calibre-Web 是一个基于现有 Calibre 书库的电子书 Web 应用。它让局域网内的所有人都能用浏览器浏览、搜索和阅读电子书：按作者、系列、标签或语言筛选，在线阅读 EPUB/PDF 或推送到阅读器，也可以在授权后编辑元数据、上传新书。本应用使用 Docker Hub 官方镜像并以非 root 用户运行；书库与全部设置都保存在应用数据目录，重启和升级都不会丢失。",
+      "important": "需要 DockerEngine。安装时从 Docker Hub 拉取镜像；若无法访问 Docker Hub，请先在 DockerEngine 中配置镜像加速。请把 Calibre 书库（包含 metadata.db 的文件夹）放到 DockerAppData/calibrewebdocker/books（文件管理器看不到该目录，请用 SSH/SFTP），然后在网页里把书库路径设为 /books。初始账号 admin，密码 admin123，请立即修改。卸载并删除数据前请备份 DockerAppData/calibrewebdocker。应用通过局域网 HTTP 访问。",
+      "release_note": "1. 首个版本：Calibre-Web 0.6.27，来自 Docker Hub，以非 root 用户运行。书库与设置保存在应用数据目录，重启和升级不丢失。"
+    },
+    "zh-hk": {
+      "descript": "Calibre-Web 是一個以現有 Calibre 書庫為基礎的電子書 Web 應用。它讓局域網內所有人用瀏覽器瀏覽、搜尋和閱讀電子書：按作者、系列、標籤或語言篩選，在線閱讀 EPUB/PDF 或推送到閱讀器，也可在授權後編輯元資料、上傳新書。本應用使用 Docker Hub 官方鏡像並以非 root 使用者運行；書庫與全部設定都保存在應用資料目錄，重啟和升級都不會遺失。",
+      "important": "需要 DockerEngine。安裝時從 Docker Hub 拉取鏡像；若無法存取 Docker Hub，請先在 DockerEngine 中設定鏡像加速。請把 Calibre 書庫（包含 metadata.db 的資料夾）放到 DockerAppData/calibrewebdocker/books（檔案管理員看不到該目錄，請用 SSH/SFTP），然後在網頁把書庫路徑設為 /books。初始帳號 admin，密碼 admin123，請立即修改。解除安裝並刪除資料前請備份 DockerAppData/calibrewebdocker。應用透過局域網 HTTP 存取。",
+      "release_note": "1. 首個版本：Calibre-Web 0.6.27，來自 Docker Hub，以非 root 使用者運行。書庫與設定保存在應用資料目錄，重啟和升級不遺失。"
+    }
+  },
+  "data_notes": "Everything persistent lives in two mounted folders: `config` holds the settings database (`app.db`), the Google Drive database (`gdrive.db`), the encryption key for stored service credentials (`.key`) and the thumbnail cache; `books` is the Calibre library itself - the folder that contains `metadata.db` and the ebook files Calibre-Web serves. Copying those two folders is a complete backup.",
+  "design_notes": [
+    "**Runs as a non-root container.** The upstream image starts s6-overlay as root and switches to its internal `abc` user, which cannot happen inside a container already running as uid 1000. `src/entrypoint.sh` bypasses s6 and starts Calibre-Web directly, verified on real hardware as `1000:1000`.",
+    "**Cache and log stay in the data volume.** `CACHE_DIRECTORY=/config/cache` and `-o /dev/stdout` keep the read-only application directory under `/app` untouched; only the container-internal `/tmp` is used for transient files.",
+    "**Two volumes, one published port.** `config` keeps the application state, `books` is the Calibre library the user brings; only the web UI publishes a host port.",
+    "**Health check** probes `/` on container port 8083; Calibre-Web answers with a 302 to its login or first-run page, which `curl` treats as success.",
+    "**Fixed image tag, never `:latest`**, Docker Hub only, no `privileged`, no `network_mode: host`, no Docker socket."
+  ],
+  "limitations": [
+    "Calibre-Web does not create a Calibre library. You must copy an existing library (the folder that contains `metadata.db` and the book files) into `DockerAppData/calibrewebdocker/books` before the first-run wizard can open it; `/books` is the path to enter in the UI.",
+    "TOS File Manager cannot browse `DockerAppData`, so the library has to be uploaded over SSH/SFTP or copied on the NAS itself.",
+    "The app is served over plain HTTP on the LAN. Do not expose the published port to the internet without a TLS reverse proxy.",
+    "One Calibre library per instance: the container mounts a single `books` folder and Calibre-Web is configured with one library path.",
+    "Book conversion and some optional features depend on tools shipped by the upstream image; they are used as-is and are not modified by this package."
+  ],
+  "runtime_files": [
+    {
+      "path": "config/app.db",
+      "purpose": "settings, users, passwords and the configured Calibre library path (SQLite database)",
+      "created": "first start",
+      "growth": "grows with settings and user accounts",
+      "lifecycle": "never overwritten; back it up with the config folder"
+    },
+    {
+      "path": "config/gdrive.db",
+      "purpose": "Google Drive integration database (empty unless that feature is used)",
+      "created": "first start",
+      "growth": "only when Google Drive is configured",
+      "lifecycle": "never overwritten; keep it with app.db"
+    },
+    {
+      "path": "config/.key",
+      "purpose": "Fernet key used to encrypt stored service credentials",
+      "created": "first start",
+      "growth": "static",
+      "lifecycle": "never overwritten; without it saved credentials can no longer be decrypted"
+    },
+    {
+      "path": "config/cache",
+      "purpose": "generated book cover and thumbnail cache",
+      "created": "on demand",
+      "growth": "grows with the library, safe to delete",
+      "lifecycle": "managed by Calibre-Web; rebuilds automatically"
+    },
+    {
+      "path": "books",
+      "purpose": "the Calibre library folder with metadata.db and the ebook files",
+      "created": "by the user",
+      "growth": "grows with every added book",
+      "lifecycle": "owned by the user; back it up before uninstalling with data removal"
+    }
+  ],
+  "official": "https://github.com/janeczku/calibre-web/wiki",
+  "help": "https://github.com/Moechz/calibreweb/issues",
+  "platform": "x86_64",
+  "publisher": "Moechz",
+  "compose_project": "calibrewebdocker",
+  "upstream_version": "0.6.27",
+  "release_tag_prefix": "v",
+  "version": "0.6.27-1",
+  "docker_socket": false,
+  "group_add": []
+}
