@@ -116,7 +116,7 @@
   "compose_project": "calibrewebdocker",
   "upstream_version": "0.6.27",
   "release_tag_prefix": "v",
-  "version": "0.6.27-2",
+  "version": "0.6.27-3",
   "docker_socket": false,
   "group_add": []
 }
